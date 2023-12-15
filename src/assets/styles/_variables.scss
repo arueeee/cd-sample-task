@@ -1,0 +1,15 @@
+$font-stack: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+	'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+	sans-serif;
+$base-color: #4A5568;
+$base-background: #FFF;
+$base-border: #CBD5E0;
+$base-border-radius: 8px;
+
+body {
+	margin: 0;
+	font: 100% $font-stack;
+	color: $base-color;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}

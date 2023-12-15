@@ -1,0 +1,48 @@
+@import "variables";
+
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+* {
+	scrollbar-width: auto;
+	scrollbar-color: $base-border #ffffff;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+	width: 10px;
+}
+
+*::-webkit-scrollbar-track {
+	background: #ffffff;
+}
+
+*::-webkit-scrollbar-thumb {
+	background-color: $base-border;
+	border-radius: 10px;
+	border: 3px solid #ffffff;
+}
+
+* {
+	scrollbar-width: auto;
+	scrollbar-color: $base-border #ffffff;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+	width: 10px;
+}
+
+*::-webkit-scrollbar-track {
+	background: #ffffff;
+}
+
+*::-webkit-scrollbar-thumb {
+	background-color: #ffffff;
+	border-radius: 10px;
+	border: 3px solid #ffffff;
+	transition: all 1250ms cubic-bezier(0.19, 1, 0.22, 1);
+
+	&:hover {
+		background-color: $base-border;
+	}
+}

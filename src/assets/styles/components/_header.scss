@@ -1,0 +1,25 @@
+.logo {
+	height: 5vmin;
+	pointer-events: none;
+	width: 6em;
+}
+
+.header {
+	width: 100%;
+	background-color: #ffffff;
+	min-height: 8vh;
+}
+
+.header-items {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	font-size: calc(10px + 2vmin);
+	margin: 10px auto;
+}
+
+.user-icon {
+	height: 40px;
+	width: 6em;
+}

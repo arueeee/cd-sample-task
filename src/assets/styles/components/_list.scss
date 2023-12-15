@@ -1,0 +1,82 @@
+@import "../mixins";
+@import "../variables";
+
+.list-tabs {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	position: relative;
+	background-color: #fff;
+	margin: 0px 32px;
+	padding: 0;
+	list-style: none;
+
+	.tab {
+		font-weight: 300;
+		font-size: 14px;
+		float: left;
+		width: 20%;
+		padding: 8px 0px;
+		text-align: center;
+		border-bottom: 2px solid #ffffff00;
+
+		&:first-child {
+			width: 10%;
+			font-weight: 700;
+			border-bottom: 2px solid $base-color;
+		}
+
+		&:hover {
+			font-weight: 700;
+			border-bottom: 2px solid $base-color;
+		}
+	}
+
+}
+
+.action-pane {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	background-color: #fff;
+	margin: 32px;
+	padding: 0;
+	align-items: center;
+
+	:first-child {
+		flex-grow: 5;
+		text-align: left;
+	}
+
+	.checkbox-wrapper {
+		.checkbox-label {
+			font-size: 14px;
+			margin-left: 10px;
+		}
+	}
+
+	.action-wrapper {
+		font-variation-settings:
+			'FILL' 1,
+			'wght' 400,
+			'GRAD' 0,
+			'opsz' 24;
+
+		span {
+			margin: 4px 20px;
+		}
+	}
+}
+
+.list-view {
+	overflow-y: auto;
+	margin: 0px 32px;
+	height: 55vh;
+
+	.list-item {
+		height: 9vh;
+		border: 1px solid $base-border;
+		margin-bottom: 4px;
+		border-radius: 6px;
+	}
+}

@@ -1,0 +1,27 @@
+@import "../mixins";
+@import "../variables";
+
+button.circle {
+	border-radius: 50%;
+	width: 55px;
+	margin-top: 15px;
+	height: 55px;
+	border: 1px solid $base-border;
+	background-color: #FFF;
+	color: #A7B4C5;
+	transition: all 1250ms cubic-bezier(0.19, 1, 0.22, 1);
+
+	span {
+		font-size: 28px !important;
+		font-variation-settings: 'OPSZ' 28;
+	}
+
+	&:hover {
+		border: 1px solid $base-border;
+		@include default-shadow;
+	}
+
+	&:active {
+		@include default-shadow;
+	}
+}
