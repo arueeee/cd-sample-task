@@ -49,9 +49,11 @@
 	}
 
 	.checkbox-wrapper {
+		margin-left: 15px;
+
 		.checkbox-label {
 			font-size: 14px;
-			margin-left: 10px;
+			margin-left: 20px;
 		}
 	}
 
@@ -60,7 +62,7 @@
 			'FILL' 1,
 			'wght' 400,
 			'GRAD' 0,
-			'opsz' 24;
+			'opsz' 20;
 
 		span {
 			margin: 4px 20px;
@@ -70,13 +72,113 @@
 
 .list-view {
 	overflow-y: auto;
-	margin: 0px 32px;
+	margin: 0px 30px;
 	height: 55vh;
 
 	.list-item {
-		height: 9vh;
+		height: 10vh;
 		border: 1px solid $base-border;
-		margin-bottom: 4px;
+		margin-right: 4px;
+		margin-bottom: 6px;
 		border-radius: 6px;
+		display: flex;
+		flex-direction: row;
+
+		&.is-read {
+			background-color: $base-color-lightest;
+			color: $base-color-lighter;
+
+			.detail-wrapper .read-users .user-avatar {
+				opacity: 50%;
+			}
+		}
+
+		&.is-selected {
+			background-color: $base-border;
+			color: $base-color;
+
+			.notifIcon {
+				filter: invert(31%) sepia(13%) saturate(833%) hue-rotate(179deg) brightness(97%) contrast(87%);
+			}
+
+			.detail-wrapper .read-users .seen {
+				color: $base-color;
+			}
+		}
+
+		.list-checkbox {
+			margin-left: 20px;
+		}
+
+		.notifIcon {
+			filter: invert(82%) sepia(8%) saturate(306%) hue-rotate(171deg) brightness(99%) contrast(101%);
+			width: 46px;
+			margin: 0px 16px;
+		}
+
+		.detail-wrapper {
+			display: flex;
+			flex-direction: column;
+			text-align: left;
+			justify-content: center;
+			flex-grow: 3;
+
+			.title {
+				font-size: 15px;
+				font-weight: 600;
+			}
+
+			.notif-header {
+				display: flex;
+				flex-direction: row;
+				text-align: center;
+
+				.prio {
+					font-size: 10px;
+					font-weight: 800;
+					margin-left: 10px;
+					padding: 2px 4px;
+					border-radius: 10%;
+					color: #fff;
+
+					&.high {
+						background-color: $base-danger;
+					}
+
+					&.med {
+						background-color: $base-warning;
+					}
+				}
+			}
+
+
+			.desc {
+				margin-top: 4px;
+				font-size: 12px;
+			}
+
+			.read-users {
+				display: flex;
+				flex-direction: row;
+				justify-content: left;
+				align-items: center;
+				margin-top: 6px;
+
+				.seen {
+					font-size: 12px;
+					color: $base-color-lighter;
+					margin-right: 10px;
+				}
+
+				.user-avatar {
+					margin-left: -4px;
+				}
+			}
+		}
+
+		.time-elapsed {
+			font-size: 12px;
+			margin: 15px 15px;
+		}
 	}
 }

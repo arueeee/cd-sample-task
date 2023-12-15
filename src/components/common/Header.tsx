@@ -1,6 +1,6 @@
 import React from "react";
-import logo from "../../assets/logo.svg";
-import user from "../../assets/user.svg";
+import logo from "../../assets/img/logo.svg";
+import user from "../../assets/img/user.svg";
 import Button from "../common/Button";
 import Panel from "../common/Panel";
 
