@@ -11,7 +11,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 Download and install Mockoon [here](https://mockoon.com/).
 
-Add the mock environment json file found in 'src/mock/sampletask.json'
+Add the mock environment json file found in `src/mock/sampletask.json`
 
 Run the environment in Mockoon
 
