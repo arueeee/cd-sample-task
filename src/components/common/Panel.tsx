@@ -2,12 +2,13 @@ import { useEffect, useState } from "react";
 import NotificationList from "../notification/NotificationList";
 import { ViewMode } from "../../constants/Global";
 
-function Panel() {
+const Panel: React.FC<{
+	closePanel: () => void;
+}> = ({ closePanel }) => {
 	const [viewMode, setViewMode] = useState(ViewMode.ALL.toString());
 
 	// Callback function to update viewmode in Panel component
 	const onViewModeChange = (viewMode: string) => {
-		console.log(viewMode);
 		setViewMode(viewMode);
 	};
 
@@ -16,6 +17,12 @@ function Panel() {
 			<div className="panel-wrapper">
 				<div className="panel-header">
 					<h2>Notifications</h2>
+					<span
+						className="material-icons-outlined icon"
+						onClick={closePanel}
+					>
+						close
+					</span>
 				</div>
 				<div className="panel-content">
 					<NotificationList onViewModeChange={onViewModeChange} />
@@ -30,6 +37,6 @@ function Panel() {
 			</div>
 		</div>
 	);
-}
+};
 
 export default Panel;

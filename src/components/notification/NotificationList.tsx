@@ -64,7 +64,7 @@ const NotificationList: React.FC<{
 				setIsLoading(false);
 			}, 1000); // 2-second delay
 		} catch (error) {
-			console.error("Error fetching notification list:", error);
+			setIsLoading(false);
 			setError(true);
 			setNotificationList([]);
 		}
@@ -189,9 +189,12 @@ const NotificationList: React.FC<{
 		setNotificationList(updatedNotifications);
 	};
 
-	const readNotification = () => {
+	const readNotification = (id?: number) => {
 		const updatedNotifications = notificationList.map((notification) => {
-			if (notification.isSelected) {
+			if (
+				notification.isSelected ||
+				notification.userNotificationId === id
+			) {
 				return {
 					...notification,
 					dateRead: new Date()
@@ -204,6 +207,11 @@ const NotificationList: React.FC<{
 			}
 			return notification;
 		});
+		console.log(
+			updatedNotifications.find(
+				(notification) => notification.userNotificationId === id
+			)?.notificationUrl
+		);
 		setNotificationList(updatedNotifications);
 	};
 
@@ -341,6 +349,19 @@ const NotificationList: React.FC<{
 							<span className="loader"></span>
 							<div className="main-lbl">
 								Fetching Notifications
+							</div>
+						</div>
+					) : hasError ? (
+						<div className="empty-list">
+							<div className="material-icons-outlined icon">
+								report
+							</div>
+							<div className="main-lbl">Server Error</div>
+							<div className="sub-lbl">
+								There was a problem fetching your notifications.
+							</div>
+							<div className="sub-lbl">
+								Please try again later.
 							</div>
 						</div>
 					) : (

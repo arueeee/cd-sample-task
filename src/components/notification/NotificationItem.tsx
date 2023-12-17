@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { IUserNotification } from "../../types/Notification";
-import avatar0 from "../../assets/img/avatar_0.png";
-import avatar1 from "../../assets/img/avatar_1.png";
+import { formatTime } from "../../utils/CommonUtils";
+import user from "../../assets/img/user_mini.png";
+import otherUser from "../../assets/img/ouser_mini.png";
 import taskIcon from "../../assets/img/task_icon.svg";
 import reminderIcon from "../../assets/img/reminder_icon.svg";
 import commentIcon from "../../assets/img/comment_icon.svg";
@@ -55,27 +56,6 @@ const NotificationItem: React.FC<{
 		}
 	};
 
-	const formatTime = (date: string) => {
-		const targetDate = new Date(date);
-		const currentDate = new Date();
-		const elapsedMilliseconds =
-			currentDate.getTime() - targetDate.getTime();
-		const seconds = Math.floor(elapsedMilliseconds / 1000);
-		const minutes = Math.floor(seconds / 60);
-		const hours = Math.floor(minutes / 60);
-		const days = Math.floor(hours / 24);
-
-		if (days > 0) {
-			return `${days} day${days !== 1 ? "s" : ""} ago`;
-		} else if (hours > 0) {
-			return `${hours} hr${hours !== 1 ? "s" : ""} ago`;
-		} else if (minutes > 0) {
-			return `${minutes} min${minutes !== 1 ? "s" : ""} ago`;
-		} else {
-			return `${seconds} sec${seconds !== 1 ? "s" : ""} ago`;
-		}
-	};
-
 	const getPriorityLbl = (prio: string) => {
 		switch (prio) {
 			case "high":
@@ -98,7 +78,6 @@ const NotificationItem: React.FC<{
 			className={`list-item ${
 				notification.dateRead !== undefined ? "is-read" : ""
 			} ${isChecked ? "is-selected" : ""}`}
-			// onClick={() => readNotification(notification.userNotificationId)}
 		>
 			<input
 				type="checkbox"
@@ -113,7 +92,14 @@ const NotificationItem: React.FC<{
 			/>
 			<div className="detail-wrapper">
 				<div className="notif-header">
-					<span className="title">{notification.title}</span>
+					<span
+						className="title"
+						onClick={() =>
+							readNotification(notification.userNotificationId)
+						}
+					>
+						{notification.title}
+					</span>
 					{notification.dateRead === undefined
 						? getPriorityLbl(notification.notificationImportance)
 						: ""}
@@ -121,10 +107,25 @@ const NotificationItem: React.FC<{
 				<div>
 					<span className="desc">{notification.description}</span>
 				</div>
-				<div className="read-users">
-					<span className="seen">Read by</span>
-					<img src={avatar1} className="user-avatar" alt="avatar" />
-				</div>
+				{notification.readByUserSub && (
+					<div className="read-users">
+						<span className="seen">Read by</span>
+						{notification.readByUserSub === "curr-user" && (
+							<img
+								src={user}
+								className="user-avatar"
+								alt="avatar"
+							/>
+						)}
+						{notification.readByUserSub !== "curr-user" && (
+							<img
+								src={otherUser}
+								className="user-avatar"
+								alt="avatar"
+							/>
+						)}
+					</div>
+				)}
 			</div>
 			<span
 				className="time-elapsed tooltip-enabled"

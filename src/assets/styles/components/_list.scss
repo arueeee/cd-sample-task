@@ -114,6 +114,15 @@
 			.detail-wrapper .read-users .user-avatar {
 				opacity: 50%;
 			}
+
+			.detail-wrapper .title {
+				cursor: initial;
+				pointer-events: none;
+
+				&:hover {
+					text-decoration: none;
+				}
+			}
 		}
 
 		&.is-selected {
@@ -126,6 +135,15 @@
 
 			.detail-wrapper .read-users .seen {
 				color: $base-color;
+			}
+
+			.detail-wrapper .title {
+				cursor: initial;
+				pointer-events: none;
+
+				&:hover {
+					text-decoration: none;
+				}
 			}
 		}
 
@@ -149,6 +167,11 @@
 			.title {
 				font-size: $font-size-15;
 				font-weight: 600;
+				cursor: pointer;
+
+				&:hover {
+					text-decoration: underline;
+				}
 			}
 
 			.notif-header {

@@ -10,6 +10,7 @@ button.circle {
 	background-color: #FFF;
 	color: #A7B4C5;
 	transition: all 1250ms cubic-bezier(0.19, 1, 0.22, 1);
+	cursor: pointer;
 
 	span {
 		font-size: 28px !important;
@@ -21,7 +22,7 @@ button.circle {
 		@include default-shadow;
 	}
 
-	&:active {
+	&.active {
 		@include default-shadow;
 	}
 }
