@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import NotificationList from "../notification/NotificationList";
 import { ViewMode } from "../../constants/Global";
 
@@ -7,7 +7,7 @@ const Panel: React.FC<{
 }> = ({ closePanel }) => {
 	const [viewMode, setViewMode] = useState(ViewMode.ALL.toString());
 
-	// Callback function to update viewmode in Panel component
+	// Callback function to update viewMode in Panel component
 	const onViewModeChange = (viewMode: string) => {
 		setViewMode(viewMode);
 	};

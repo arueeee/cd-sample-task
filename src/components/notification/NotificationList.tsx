@@ -57,12 +57,11 @@ const NotificationList: React.FC<{
 				})
 			);
 
-			// Simulate a 2-second delay using setTimeout
+			// Simulate a 1-second delay
 			setTimeout(() => {
 				setNotificationList(normalizedData);
-				// After the delay, set isLoading to false
 				setIsLoading(false);
-			}, 1000); // 2-second delay
+			}, 1000);
 		} catch (error) {
 			setIsLoading(false);
 			setError(true);
@@ -146,6 +145,7 @@ const NotificationList: React.FC<{
 		setNotificationList(updatedSelection);
 	};
 
+	// Archives the notification by setting dateArchived,archivedByUserSub,archivedByUserName to all isSelected notification items
 	const archiveNotification = () => {
 		const updatedNotifications = notificationList.map((notification) => {
 			if (notification.isSelected) {
@@ -166,6 +166,7 @@ const NotificationList: React.FC<{
 		setNotificationList(updatedNotifications);
 	};
 
+	// Unarchived the notification by removing dateArchived,archivedByUserSub,archivedByUserName to all isSelected notification items
 	const unarchiveNotification = () => {
 		const updatedNotifications = notificationList.map((notification) => {
 			if (notification.isSelected && notification.dateArchived) {
@@ -173,7 +174,7 @@ const NotificationList: React.FC<{
 					dateArchived,
 					archivedByUserSub,
 					archivedByUserName,
-					...rest // Exclude specified properties from the rest of the notification properties
+					...rest
 				} = notification;
 
 				return {
@@ -189,6 +190,7 @@ const NotificationList: React.FC<{
 		setNotificationList(updatedNotifications);
 	};
 
+	// Reads the notification by setting dateRead,readByUserSub,readByUserName to all isSelected notification items or to a specific notification via id
 	const readNotification = (id?: number) => {
 		const updatedNotifications = notificationList.map((notification) => {
 			if (
@@ -207,23 +209,16 @@ const NotificationList: React.FC<{
 			}
 			return notification;
 		});
-		console.log(
-			updatedNotifications.find(
-				(notification) => notification.userNotificationId === id
-			)?.notificationUrl
-		);
+
 		setNotificationList(updatedNotifications);
 	};
 
+	// Unreads the notification by removing dateRead,readByUserSub,readByUserName to all isSelected notification items
 	const unreadNotification = () => {
 		const updatedNotifications = notificationList.map((notification) => {
 			if (notification.isSelected && notification.dateRead) {
-				const {
-					dateRead,
-					readByUserSub,
-					readByUserName,
-					...rest // Exclude specified properties from the rest of the notification properties
-				} = notification;
+				const { dateRead, readByUserSub, readByUserName, ...rest } =
+					notification;
 
 				return {
 					...rest,

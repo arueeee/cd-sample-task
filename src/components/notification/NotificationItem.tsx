@@ -11,7 +11,6 @@ import medPrioIcon from "../../assets/img/med_prio.svg";
 
 const NotificationItem: React.FC<{
 	notification: IUserNotification;
-
 	readNotification: (notificationId: number) => void;
 	itemSelection: (operation: string, notificationId: number) => void;
 	isSelected: boolean;
@@ -25,7 +24,7 @@ const NotificationItem: React.FC<{
 	isSelectAll,
 	setSelectAll,
 }) => {
-	const [isChecked, setIsChecked] = useState(isSelected); // State to manage checked status
+	const [isChecked, setIsChecked] = useState(isSelected);
 
 	useEffect(() => {
 		setIsChecked(isSelected); // Update isChecked when isSelected prop changes
@@ -33,16 +32,17 @@ const NotificationItem: React.FC<{
 
 	const handleCheckboxChange = () => {
 		if (isSelectAll) {
-			setSelectAll(false); // If SelectAll is true, set it to false
+			setSelectAll(false);
 		}
 		setIsChecked(!isChecked);
 
 		itemSelection(
 			isChecked ? "remove" : "add",
 			notification.userNotificationId
-		);
+		); // modifies notificationList[x].isSelected value when checked or unchecked
 	};
 
+	// Sets notification type icon for notification item
 	const getIconType = (type: string) => {
 		switch (type) {
 			case "comment":
@@ -56,7 +56,8 @@ const NotificationItem: React.FC<{
 		}
 	};
 
-	const getPriorityLbl = (prio: string) => {
+	// Sets priority icon for notification item
+	const getPriorityIcon = (prio: string) => {
 		switch (prio) {
 			case "high":
 				return (
@@ -82,8 +83,8 @@ const NotificationItem: React.FC<{
 			<input
 				type="checkbox"
 				className="list-checkbox"
-				checked={isChecked} // Set the checked state
-				onChange={handleCheckboxChange} // Update state on change
+				checked={isChecked}
+				onChange={handleCheckboxChange}
 			/>
 			<img
 				src={getIconType(notification.notificationType)}
@@ -101,7 +102,7 @@ const NotificationItem: React.FC<{
 						{notification.title}
 					</span>
 					{notification.dateRead === undefined
-						? getPriorityLbl(notification.notificationImportance)
+						? getPriorityIcon(notification.notificationImportance)
 						: ""}
 				</div>
 				<div>
@@ -131,7 +132,7 @@ const NotificationItem: React.FC<{
 				className="time-elapsed tooltip-enabled"
 				data-text={new Date(
 					notification.notificationDate!
-				).toLocaleString()}
+				).toLocaleString()} //Tooltip text value
 			>
 				{formatTime(notification.notificationDate!)}
 			</span>
