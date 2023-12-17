@@ -17,6 +17,10 @@ Run the environment in Mockoon
 
 Once Mockoon is running SampleTask will be able to fetch the Notification list
 
+### `Browser Compatibility`
+
+Only tested on Chrome for Windows with 1920x1080 resolution. 
+
 ## More Info
 
 You can find more info on the dev timeline [here](https://glory-rose-2e6.notion.site/Compound-Direct-Sample-Task-583ccde1d7694cba96929b664d1b56bd).
