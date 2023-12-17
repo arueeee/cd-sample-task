@@ -12,6 +12,8 @@
 	text-align: center;
 	height: 85vh;
 	border-radius: $base-border-radius;
+	display: flex;
+	flex-direction: column;
 }
 
 .panel-header {
@@ -19,7 +21,9 @@
 	margin: 28px 32px;
 }
 
-.panel-content {}
+.panel-wrapper {
+	flex: 1 0 auto;
+}
 
 .panel-footer {
 	display: flex;
@@ -28,6 +32,6 @@
 	justify-content: center;
 	text-align: center;
 	color: $base-border;
-	font-size: 14px;
-	height: 60px;
+	font-size: $font-size-14;
+	height: 48px;
 }

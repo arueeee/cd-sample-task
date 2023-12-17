@@ -5,12 +5,42 @@ import avatar1 from "../../assets/img/avatar_1.png";
 import taskIcon from "../../assets/img/task_icon.svg";
 import reminderIcon from "../../assets/img/reminder_icon.svg";
 import commentIcon from "../../assets/img/comment_icon.svg";
+import highPrioIcon from "../../assets/img/high_prio.svg";
+import medPrioIcon from "../../assets/img/med_prio.svg";
 
 const NotificationItem: React.FC<{
 	notification: IUserNotification;
-	markNotificationAsRead: (notificationId: number) => void;
-}> = ({ notification, markNotificationAsRead }) => {
-	const [isChecked, setIsChecked] = useState(false); // State to manage checked status
+
+	readNotification: (notificationId: number) => void;
+	itemSelection: (operation: string, notificationId: number) => void;
+	isSelected: boolean;
+	isSelectAll: boolean;
+	setSelectAll: React.Dispatch<React.SetStateAction<boolean>>;
+}> = ({
+	notification,
+	readNotification,
+	itemSelection,
+	isSelected,
+	isSelectAll,
+	setSelectAll,
+}) => {
+	const [isChecked, setIsChecked] = useState(isSelected); // State to manage checked status
+
+	useEffect(() => {
+		setIsChecked(isSelected); // Update isChecked when isSelected prop changes
+	}, [isSelected]);
+
+	const handleCheckboxChange = () => {
+		if (isSelectAll) {
+			setSelectAll(false); // If SelectAll is true, set it to false
+		}
+		setIsChecked(!isChecked);
+
+		itemSelection(
+			isChecked ? "remove" : "add",
+			notification.userNotificationId
+		);
+	};
 
 	const getIconType = (type: string) => {
 		switch (type) {
@@ -49,10 +79,14 @@ const NotificationItem: React.FC<{
 	const getPriorityLbl = (prio: string) => {
 		switch (prio) {
 			case "high":
-				return <span className="prio high">HIGH</span>;
+				return (
+					<img src={highPrioIcon} className="prio high" alt="prio" />
+				);
 
 			case "medium":
-				return <span className="prio med">MED</span>;
+				return (
+					<img src={medPrioIcon} className="prio med" alt="prio" />
+				);
 
 			default:
 				return;
@@ -62,23 +96,15 @@ const NotificationItem: React.FC<{
 	return (
 		<div
 			className={`list-item ${
-				notification.dateRead === undefined ? "is-read" : ""
+				notification.dateRead !== undefined ? "is-read" : ""
 			} ${isChecked ? "is-selected" : ""}`}
+			// onClick={() => readNotification(notification.userNotificationId)}
 		>
-			<div key={notification.userNotificationId}>
-				<button
-					onClick={() =>
-						markNotificationAsRead(notification.userNotificationId)
-					}
-				>
-					Mark as Read
-				</button>
-			</div>
 			<input
 				type="checkbox"
 				className="list-checkbox"
 				checked={isChecked} // Set the checked state
-				onChange={(e) => setIsChecked(e.target.checked)} // Update state on change
+				onChange={handleCheckboxChange} // Update state on change
 			/>
 			<img
 				src={getIconType(notification.notificationType)}
@@ -88,7 +114,7 @@ const NotificationItem: React.FC<{
 			<div className="detail-wrapper">
 				<div className="notif-header">
 					<span className="title">{notification.title}</span>
-					{notification.dateRead !== undefined
+					{notification.dateRead === undefined
 						? getPriorityLbl(notification.notificationImportance)
 						: ""}
 				</div>
@@ -96,12 +122,16 @@ const NotificationItem: React.FC<{
 					<span className="desc">{notification.description}</span>
 				</div>
 				<div className="read-users">
-					<span className="seen">Seen by</span>
-					<img src={avatar0} className="user-avatar" alt="avatar" />
+					<span className="seen">Read by</span>
 					<img src={avatar1} className="user-avatar" alt="avatar" />
 				</div>
 			</div>
-			<span className="time-elapsed">
+			<span
+				className="time-elapsed tooltip-enabled"
+				data-text={new Date(
+					notification.notificationDate!
+				).toLocaleString()}
+			>
 				{formatTime(notification.notificationDate!)}
 			</span>
 		</div>

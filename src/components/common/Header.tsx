@@ -1,7 +1,6 @@
 import React from "react";
-import logo from "../../assets/img/logo.svg";
+import logo from "../../assets/img/logo.png";
 import user from "../../assets/img/user.svg";
-import Button from "../common/Button";
 import Panel from "../common/Panel";
 
 function Header() {
@@ -10,7 +9,11 @@ function Header() {
 			<div className="header-items">
 				<img src={logo} className="logo" alt="logo" />
 				<div className="button-group">
-					<Button />
+					<button className="circle notification">
+						<span className="material-icons-outlined">
+							notifications
+						</span>
+					</button>
 				</div>
 				<img src={user} className="user-icon" alt="user" />
 			</div>

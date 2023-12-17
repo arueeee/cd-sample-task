@@ -35,4 +35,6 @@ export interface IUserNotification {
 	dateArchived?: string;
 	archivedByUserSub?: string;
 	archivedByUserName?: string;
+
+	isSelected: boolean;
 }
