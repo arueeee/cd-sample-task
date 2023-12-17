@@ -1,0 +1,93 @@
+{
+  "uuid": "11348726-ae6b-428c-9e26-b35b4e9f6885",
+  "lastMigration": 32,
+  "name": "Sample Task",
+  "endpointPrefix": "v1/",
+  "latency": 0,
+  "port": 3001,
+  "hostname": "",
+  "folders": [],
+  "routes": [
+    {
+      "uuid": "27855fd7-1960-4f59-85cd-aefd4146e641",
+      "type": "http",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "notifications",
+      "responses": [
+        {
+          "uuid": "5414e7eb-a4f4-463a-b9d1-7c7e552afdc6",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "http://localhost:3000"
+            }
+          ],
+          "bodyType": "DATABUCKET",
+          "filePath": "",
+          "databucketID": "ngz8",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    }
+  ],
+  "rootChildren": [
+    {
+      "type": "route",
+      "uuid": "27855fd7-1960-4f59-85cd-aefd4146e641"
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [
+    {
+      "key": "Content-Type",
+      "value": "application/json"
+    }
+  ],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": [
+    {
+      "uuid": "a0feb4b9-b975-4cb2-bd15-c11a44e7d9c1",
+      "id": "ngz8",
+      "name": "notifications",
+      "documentation": "",
+      "value": "[\r\n\t{\r\n\t\t\"userNotificationId\": 1,\r\n\t\t\"title\": \"Clean Benches\",\r\n\t\t\"description\": \"Please clean the benches in the common area.\",\r\n\t\t\"notificationType\": \"task\",\r\n\t\t\"notificationDate\": \"2023-12-15T10:00:00\",\r\n\t\t\"notificationUrl\": \"https://workspace.compound.direct/task/123\",\r\n\t\t\"notificationImportance\": \"high\",\r\n\t\t\"createdByUserSub\": \"admin-sub-123\",\r\n\t\t\"createdByUserName\": \"Admin User\",\r\n\t\t\"readByUserSub\": \"david-rees-sub-123\",\r\n\t\t\"readByUserName\": \"David Rees\"\r\n\t},\r\n\t{\r\n\t\t\"userNotificationId\": 2,\r\n\t\t\"title\": \"Other User mentioned you in a comment:\",\r\n\t\t\"description\": \"@David Rees, what do you think about the new project?\",\r\n\t\t\"notificationType\": \"comment\",\r\n\t\t\"notificationDate\": \"2023-12-13T15:30:00\",\r\n\t\t\"notificationUrl\": \"https://workspace.compound.direct/task/123\",\r\n\t\t\"notificationImportance\": \"default\",\r\n\t\t\"createdByUserSub\": \"admin-sub-123\",\r\n\t\t\"createdByUserName\": \"Admin User\"\r\n\t},\r\n\t{\r\n\t\t\"userNotificationId\": 3,\r\n\t\t\"title\": \"Other User mentioned you in a comment:\",\r\n\t\t\"description\": \"@David Rees, Can we have a meeting tomorrow?\",\r\n\t\t\"notificationType\": \"comment\",\r\n\t\t\"notificationDate\": \"2023-12-12T09:30:00\",\r\n\t\t\"notificationUrl\": \"https://workspace.compound.direct/task/123\",\r\n\t\t\"notificationImportance\": \"default\",\r\n\t\t\"createdByUserSub\": \"other-user-sub-456\",\r\n\t\t\"createdByUserName\": \"Other User\"\r\n\t},\r\n\t{\r\n\t\t\"userNotificationId\": 4,\r\n\t\t\"title\": \"Review SOPs\",\r\n\t\t\"description\": \"Update OHS SOPs in the shared folder.\",\r\n\t\t\"notificationType\": \"task\",\r\n\t\t\"notificationDate\": \"2023-12-12T14:00:00\",\r\n\t\t\"notificationUrl\": \"https://workspace.compound.direct/task/123\",\r\n\t\t\"notificationImportance\": \"medium\",\r\n\t\t\"createdByUserSub\": \"admin-sub-123\",\r\n\t\t\"createdByUserName\": \"Admin User\"\r\n\t},\r\n\t{\r\n\t\t\"userNotificationId\": 5,\r\n\t\t\"title\": \"Team Meeting Tomorrow\",\r\n\t\t\"description\": \"Team meeting tomorrow at 2:00 PM. Be prepared!\",\r\n\t\t\"notificationType\": \"reminder\",\r\n\t\t\"notificationDate\": \"2023-12-13T14:00:00\",\r\n\t\t\"notificationUrl\": \"https://workspace.compound.direct/task/123\",\r\n\t\t\"notificationImportance\": \"high\",\r\n\t\t\"createdByUserSub\": \"admin-sub-123\",\r\n\t\t\"createdByUserName\": \"Admin User\"\r\n\t},\r\n\t{\r\n\t\t\"userNotificationId\": 6,\r\n\t\t\"title\": \"Consider hiring Rommel\",\r\n\t\t\"description\": \"We should hire this guy\",\r\n\t\t\"notificationType\": \"task\",\r\n\t\t\"notificationDate\": \"2023-12-12T09:30:00\",\r\n\t\t\"notificationUrl\": \"https://workspace.compound.direct/task/123\",\r\n\t\t\"notificationImportance\": \"high\",\r\n\t\t\"createdByUserSub\": \"other-user-sub-789\",\r\n\t\t\"createdByUserName\": \"Other User 2\"\r\n\t},\r\n\t{\r\n\t\t\"userNotificationId\": 7,\r\n\t\t\"title\": \"David mentioned you in a comment:\",\r\n\t\t\"description\": \"@Courtney & @David Rees Review Assay and LOD from CoFa\",\r\n\t\t\"notificationType\": \"task\",\r\n\t\t\"notificationDate\": \"2023-11-14T16:00:00\",\r\n\t\t\"notificationUrl\": \"https://workspace.compound.direct/task/123\",\r\n\t\t\"notificationImportance\": \"high\",\r\n\t\t\"dateRead\": \"2023-12-14T16:00:00\",\r\n\t\t\"createdByUserSub\": \"admin-sub-123\",\r\n\t\t\"createdByUserName\": \"Admin User\",\r\n\t\t\"readByUserSub\": \"david-rees-sub-123\",\r\n\t\t\"readByUserName\": \"David Rees\"\r\n\t},\r\n\t{\r\n\t\t\"userNotificationId\": 8,\r\n\t\t\"title\": \"You have a scheduled reminder\",\r\n\t\t\"description\": \"@remindme to check this in two days\",\r\n\t\t\"notificationType\": \"task\",\r\n\t\t\"notificationDate\": \"2023-12-11T11:00:00\",\r\n\t\t\"notificationUrl\": \"https://workspace.compound.direct/task/123\",\r\n\t\t\"notificationImportance\": \"medium\",\r\n\t\t\"createdByUserSub\": \"admin-sub-123\",\r\n\t\t\"createdByUserName\": \"Admin User\",\r\n\t\t\"dateRead\": \"2023-12-14T16:00:00\",\r\n\t\t\"readByUserSub\": \"david-rees-sub-123\",\r\n\t\t\"readByUserName\": \"David Rees\",\r\n\t\t\"archivedByUserSub\": \"david-rees-sub-456\",\r\n\t\t\"archivedByUserName\": \"David Rees\",\r\n\t\t\"dateArchived\": \"2023-12-15T12:00:00\"\r\n\t},\r\n\t{\r\n\t\t\"userNotificationId\": 9,\r\n\t\t\"title\": \"Mention in Comment by John\",\r\n\t\t\"description\": \"@David Rees, your expertise is needed in the project meeting.\",\r\n\t\t\"notificationType\": \"comment\",\r\n\t\t\"notificationDate\": \"2023-11-17T09:00:00\",\r\n\t\t\"notificationUrl\": \"https://workspace.compound.direct/task/123\",\r\n\t\t\"notificationImportance\": \"default\",\r\n\t\t\"createdByUserSub\": \"other-user-sub-456\",\r\n\t\t\"createdByUserName\": \"Other User\",\r\n\t\t\"archivedByUserSub\": \"david-rees-sub-456\",\r\n\t\t\"archivedByUserName\": \"David Rees\",\r\n\t\t\"dateArchived\": \"2023-12-15T12:00:00\"\r\n\t},\r\n\t{\r\n\t\t\"userNotificationId\": 10,\r\n\t\t\"title\": \"Reminder: Submit Weekly Report\",\r\n\t\t\"description\": \"Don't forget to submit your weekly report by Friday.\",\r\n\t\t\"notificationType\": \"reminder\",\r\n\t\t\"notificationDate\": \"2023-12-13T12:00:00\",\r\n\t\t\"notificationUrl\": \"https://workspace.compound.direct/task/123\",\r\n\t\t\"notificationImportance\": \"medium\",\r\n\t\t\"createdByUserSub\": \"admin-sub-123\",\r\n\t\t\"createdByUserName\": \"Admin User\",\r\n\t\t\"archivedByUserSub\": \"admin-sub-123\",\r\n\t\t\"archivedByUserName\": \"Admin User\",\r\n\t\t\"dateArchived\": \"2023-12-15T12:00:00\"\r\n\t}\r\n]\r\n"
+    }
+  ],
+  "callbacks": []
+}
